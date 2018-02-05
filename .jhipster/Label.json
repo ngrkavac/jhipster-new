@@ -13,6 +13,10 @@
         {
             "fieldName": "version",
             "fieldType": "Integer"
+        },
+        {
+            "fieldName": "country",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20180123123748",

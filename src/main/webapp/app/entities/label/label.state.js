@@ -98,6 +98,7 @@
                                 label_key: null,
                                 label_value: null,
                                 version: null,
+                                country: null,
                                 id: null
                             };
                         }

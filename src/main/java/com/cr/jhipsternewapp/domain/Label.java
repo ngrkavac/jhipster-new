@@ -29,6 +29,9 @@ public class Label implements Serializable {
     @Column(name = "version")
     private Integer version;
 
+    @Column(name = "country")
+    private String country;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -76,6 +79,19 @@ public class Label implements Serializable {
     public void setVersion(Integer version) {
         this.version = version;
     }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public Label country(String country) {
+        this.country = country;
+        return this;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -105,6 +121,7 @@ public class Label implements Serializable {
             ", label_key='" + getLabel_key() + "'" +
             ", label_value='" + getLabel_value() + "'" +
             ", version=" + getVersion() +
+            ", country='" + getCountry() + "'" +
             "}";
     }
 }
