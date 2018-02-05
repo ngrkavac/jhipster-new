@@ -1,0 +1,27 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "label",
+            "otherEntityName": "label",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "translation_language",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "version",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20180123124740",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "label_translation",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

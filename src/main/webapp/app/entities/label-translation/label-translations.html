@@ -1,0 +1,62 @@
+<div>
+    <h2>Label Translations</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="label-translation.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Label Translation
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Translation Language</span></th>
+                    <th><span>Version</span></th>
+                    <th><span>Label</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="label_translation in vm.label_translations track by label_translation.id">
+                    <td><a ui-sref="label-translation-detail({id:label_translation.id})">{{label_translation.id}}</a></td>
+                    <td>{{label_translation.translation_language}}</td>
+                    <td>{{label_translation.version}}</td>
+                    <td>
+                        <a ui-sref="label-detail({id:label_translation.label.id})">{{label_translation.label.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="label-translation-detail({id:label_translation.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="label-translation.edit({id:label_translation.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="label-translation.delete({id:label_translation.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

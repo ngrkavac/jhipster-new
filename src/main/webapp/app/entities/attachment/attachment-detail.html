@@ -1,0 +1,38 @@
+
+<div>
+    <h2><span>Attachment</span> {{vm.attachment.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>File Name</span></dt>
+        <dd>
+            <span>{{vm.attachment.file_name}}</span>
+        </dd>
+        <dt><span>Created By</span></dt>
+        <dd>
+            <span>{{vm.attachment.created_by}}</span>
+        </dd>
+        <dt><span>File</span></dt>
+        <dd>
+            <div ng-if="vm.attachment.file">
+                <a ng-click="vm.openFile(vm.attachment.fileContentType, vm.attachment.file)">open</a>
+                {{vm.attachment.fileContentType}}, {{vm.byteSize(vm.attachment.file)}}
+            </div>
+        </dd>
+        <dt><span>Version</span></dt>
+        <dd>
+            <span>{{vm.attachment.version}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="attachment-detail.edit({id:vm.attachment.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

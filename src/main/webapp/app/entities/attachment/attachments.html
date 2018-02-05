@@ -1,0 +1,65 @@
+<div>
+    <h2>Attachments</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="attachment.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Attachment
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>File Name</span></th>
+                    <th><span>Created By</span></th>
+                    <th><span>File</span></th>
+                    <th><span>Version</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="attachment in vm.attachments track by attachment.id">
+                    <td><a ui-sref="attachment-detail({id:attachment.id})">{{attachment.id}}</a></td>
+                    <td>{{attachment.file_name}}</td>
+                    <td>{{attachment.created_by}}</td>
+                    <td>
+                        <a ng-if="attachment.file" ng-click="vm.openFile(attachment.fileContentType, attachment.file)">open</a>
+                        <span ng-if="attachment.file">{{attachment.fileContentType}}, {{vm.byteSize(attachment.file)}}</span>
+                    </td>
+                    <td>{{attachment.version}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="attachment-detail({id:attachment.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="attachment.edit({id:attachment.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="attachment.delete({id:attachment.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

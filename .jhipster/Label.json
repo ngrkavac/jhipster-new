@@ -1,0 +1,24 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "label_key",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "label_value",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "version",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20180123123748",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "label",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}
