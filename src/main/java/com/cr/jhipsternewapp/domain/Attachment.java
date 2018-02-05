@@ -1,11 +1,11 @@
 package com.cr.jhipsternewapp.domain;
 
 
+import javax.persistence.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Objects;
-
-import javax.persistence.*;
 
 /**
  * A Attachment.
@@ -36,6 +36,9 @@ public class Attachment implements Serializable {
 
     @Column(name = "version")
     private Integer version;
+
+    @Column(name = "created_on")
+    private LocalDate created_on;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -110,6 +113,19 @@ public class Attachment implements Serializable {
     public void setVersion(Integer version) {
         this.version = version;
     }
+
+    public LocalDate getCreated_on() {
+        return created_on;
+    }
+
+    public Attachment created_on(LocalDate created_on) {
+        this.created_on = created_on;
+        return this;
+    }
+
+    public void setCreated_on(LocalDate created_on) {
+        this.created_on = created_on;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -141,6 +157,7 @@ public class Attachment implements Serializable {
             ", file='" + getFile() + "'" +
             ", fileContentType='" + getFileContentType() + "'" +
             ", version=" + getVersion() +
+            ", created_on='" + getCreated_on() + "'" +
             "}";
     }
 }

@@ -22,6 +22,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Base64Utils;
 
 import javax.persistence.EntityManager;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 import static com.cr.jhipsternewapp.web.rest.TestUtil.createFormattingConversionService;
@@ -52,6 +54,9 @@ public class AttachmentResourceIntTest {
 
     private static final Integer DEFAULT_VERSION = 1;
     private static final Integer UPDATED_VERSION = 2;
+
+    private static final LocalDate DEFAULT_CREATED_ON = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_CREATED_ON = LocalDate.now(ZoneId.systemDefault());
 
     @Autowired
     private AttachmentRepository attachmentRepository;
@@ -95,7 +100,8 @@ public class AttachmentResourceIntTest {
             .created_by(DEFAULT_CREATED_BY)
             .file(DEFAULT_FILE)
             .fileContentType(DEFAULT_FILE_CONTENT_TYPE)
-            .version(DEFAULT_VERSION);
+            .version(DEFAULT_VERSION)
+            .created_on(DEFAULT_CREATED_ON);
         return attachment;
     }
 
@@ -124,6 +130,7 @@ public class AttachmentResourceIntTest {
         assertThat(testAttachment.getFile()).isEqualTo(DEFAULT_FILE);
         assertThat(testAttachment.getFileContentType()).isEqualTo(DEFAULT_FILE_CONTENT_TYPE);
         assertThat(testAttachment.getVersion()).isEqualTo(DEFAULT_VERSION);
+        assertThat(testAttachment.getCreated_on()).isEqualTo(DEFAULT_CREATED_ON);
     }
 
     @Test
@@ -160,7 +167,8 @@ public class AttachmentResourceIntTest {
             .andExpect(jsonPath("$.[*].created_by").value(hasItem(DEFAULT_CREATED_BY.toString())))
             .andExpect(jsonPath("$.[*].fileContentType").value(hasItem(DEFAULT_FILE_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].file").value(hasItem(Base64Utils.encodeToString(DEFAULT_FILE))))
-            .andExpect(jsonPath("$.[*].version").value(hasItem(DEFAULT_VERSION)));
+            .andExpect(jsonPath("$.[*].version").value(hasItem(DEFAULT_VERSION)))
+            .andExpect(jsonPath("$.[*].created_on").value(hasItem(DEFAULT_CREATED_ON.toString())));
     }
 
     @Test
@@ -178,7 +186,8 @@ public class AttachmentResourceIntTest {
             .andExpect(jsonPath("$.created_by").value(DEFAULT_CREATED_BY.toString()))
             .andExpect(jsonPath("$.fileContentType").value(DEFAULT_FILE_CONTENT_TYPE))
             .andExpect(jsonPath("$.file").value(Base64Utils.encodeToString(DEFAULT_FILE)))
-            .andExpect(jsonPath("$.version").value(DEFAULT_VERSION));
+            .andExpect(jsonPath("$.version").value(DEFAULT_VERSION))
+            .andExpect(jsonPath("$.created_on").value(DEFAULT_CREATED_ON.toString()));
     }
 
     @Test
@@ -205,7 +214,8 @@ public class AttachmentResourceIntTest {
             .created_by(UPDATED_CREATED_BY)
             .file(UPDATED_FILE)
             .fileContentType(UPDATED_FILE_CONTENT_TYPE)
-            .version(UPDATED_VERSION);
+            .version(UPDATED_VERSION)
+            .created_on(UPDATED_CREATED_ON);
 
         restAttachmentMockMvc.perform(put("/api/attachments")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -221,6 +231,7 @@ public class AttachmentResourceIntTest {
         assertThat(testAttachment.getFile()).isEqualTo(UPDATED_FILE);
         assertThat(testAttachment.getFileContentType()).isEqualTo(UPDATED_FILE_CONTENT_TYPE);
         assertThat(testAttachment.getVersion()).isEqualTo(UPDATED_VERSION);
+        assertThat(testAttachment.getCreated_on()).isEqualTo(UPDATED_CREATED_ON);
     }
 
     @Test

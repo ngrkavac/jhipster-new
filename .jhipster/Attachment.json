@@ -18,6 +18,10 @@
         {
             "fieldName": "version",
             "fieldType": "Integer"
+        },
+        {
+            "fieldName": "created_on",
+            "fieldType": "LocalDate"
         }
     ],
     "changelogDate": "20180123151825",

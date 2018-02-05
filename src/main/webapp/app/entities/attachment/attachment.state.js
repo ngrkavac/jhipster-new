@@ -100,6 +100,7 @@
                                 file: null,
                                 fileContentType: null,
                                 version: null,
+                                created_on: null,
                                 id: null
                             };
                         }
