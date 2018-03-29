@@ -50,6 +50,9 @@ public class LabelResourceIntTest {
     private static final String DEFAULT_COUNTRY = "AAAAAAAAAA";
     private static final String UPDATED_COUNTRY = "BBBBBBBBBB";
 
+    private static final String DEFAULT_OWNER = "AAAAAAAAAA";
+    private static final String UPDATED_OWNER = "BBBBBBBBBB";
+
     @Autowired
     private LabelRepository labelRepository;
 
@@ -91,7 +94,8 @@ public class LabelResourceIntTest {
             .label_key(DEFAULT_LABEL_KEY)
             .label_value(DEFAULT_LABEL_VALUE)
             .version(DEFAULT_VERSION)
-            .country(DEFAULT_COUNTRY);
+            .country(DEFAULT_COUNTRY)
+            .owner(DEFAULT_OWNER);
         return label;
     }
 
@@ -119,6 +123,7 @@ public class LabelResourceIntTest {
         assertThat(testLabel.getLabel_value()).isEqualTo(DEFAULT_LABEL_VALUE);
         assertThat(testLabel.getVersion()).isEqualTo(DEFAULT_VERSION);
         assertThat(testLabel.getCountry()).isEqualTo(DEFAULT_COUNTRY);
+        assertThat(testLabel.getOwner()).isEqualTo(DEFAULT_OWNER);
     }
 
     @Test
@@ -154,7 +159,8 @@ public class LabelResourceIntTest {
             .andExpect(jsonPath("$.[*].label_key").value(hasItem(DEFAULT_LABEL_KEY.toString())))
             .andExpect(jsonPath("$.[*].label_value").value(hasItem(DEFAULT_LABEL_VALUE.toString())))
             .andExpect(jsonPath("$.[*].version").value(hasItem(DEFAULT_VERSION)))
-            .andExpect(jsonPath("$.[*].country").value(hasItem(DEFAULT_COUNTRY.toString())));
+            .andExpect(jsonPath("$.[*].country").value(hasItem(DEFAULT_COUNTRY.toString())))
+            .andExpect(jsonPath("$.[*].owner").value(hasItem(DEFAULT_OWNER.toString())));
     }
 
     @Test
@@ -171,7 +177,8 @@ public class LabelResourceIntTest {
             .andExpect(jsonPath("$.label_key").value(DEFAULT_LABEL_KEY.toString()))
             .andExpect(jsonPath("$.label_value").value(DEFAULT_LABEL_VALUE.toString()))
             .andExpect(jsonPath("$.version").value(DEFAULT_VERSION))
-            .andExpect(jsonPath("$.country").value(DEFAULT_COUNTRY.toString()));
+            .andExpect(jsonPath("$.country").value(DEFAULT_COUNTRY.toString()))
+            .andExpect(jsonPath("$.owner").value(DEFAULT_OWNER.toString()));
     }
 
     @Test
@@ -197,7 +204,8 @@ public class LabelResourceIntTest {
             .label_key(UPDATED_LABEL_KEY)
             .label_value(UPDATED_LABEL_VALUE)
             .version(UPDATED_VERSION)
-            .country(UPDATED_COUNTRY);
+            .country(UPDATED_COUNTRY)
+            .owner(UPDATED_OWNER);
 
         restLabelMockMvc.perform(put("/api/labels")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -212,6 +220,7 @@ public class LabelResourceIntTest {
         assertThat(testLabel.getLabel_value()).isEqualTo(UPDATED_LABEL_VALUE);
         assertThat(testLabel.getVersion()).isEqualTo(UPDATED_VERSION);
         assertThat(testLabel.getCountry()).isEqualTo(UPDATED_COUNTRY);
+        assertThat(testLabel.getOwner()).isEqualTo(UPDATED_OWNER);
     }
 
     @Test

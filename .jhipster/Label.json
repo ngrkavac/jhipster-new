@@ -17,6 +17,10 @@
         {
             "fieldName": "country",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "owner",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20180123123748",

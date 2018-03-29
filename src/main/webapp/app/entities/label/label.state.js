@@ -99,6 +99,7 @@
                                 label_value: null,
                                 version: null,
                                 country: null,
+                                owner: null,
                                 id: null
                             };
                         }

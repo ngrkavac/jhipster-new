@@ -32,6 +32,9 @@ public class Label implements Serializable {
     @Column(name = "country")
     private String country;
 
+    @Column(name = "owner")
+    private String owner;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -92,6 +95,19 @@ public class Label implements Serializable {
     public void setCountry(String country) {
         this.country = country;
     }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public Label owner(String owner) {
+        this.owner = owner;
+        return this;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -122,6 +138,7 @@ public class Label implements Serializable {
             ", label_value='" + getLabel_value() + "'" +
             ", version=" + getVersion() +
             ", country='" + getCountry() + "'" +
+            ", owner='" + getOwner() + "'" +
             "}";
     }
 }
