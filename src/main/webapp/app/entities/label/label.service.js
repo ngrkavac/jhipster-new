@@ -4,9 +4,9 @@
         .module('jhipsterNewApp')
         .factory('Label', Label);
 
-    Label.$inject = ['$resource'];
+    Label.$inject = ['$resource', 'DateUtils'];
 
-    function Label ($resource) {
+    function Label ($resource, DateUtils) {
         var resourceUrl =  'api/labels/:id';
 
         return $resource(resourceUrl, {}, {
@@ -16,11 +16,27 @@
                 transformResponse: function (data) {
                     if (data) {
                         data = angular.fromJson(data);
+                        data.created = DateUtils.convertLocalDateFromServer(data.created);
                     }
                     return data;
                 }
             },
-            'update': { method:'PUT' }
+            'update': {
+                method: 'PUT',
+                transformRequest: function (data) {
+                    var copy = angular.copy(data);
+                    copy.created = DateUtils.convertLocalDateToServer(copy.created);
+                    return angular.toJson(copy);
+                }
+            },
+            'save': {
+                method: 'POST',
+                transformRequest: function (data) {
+                    var copy = angular.copy(data);
+                    copy.created = DateUtils.convertLocalDateToServer(copy.created);
+                    return angular.toJson(copy);
+                }
+            }
         });
     }
 })();

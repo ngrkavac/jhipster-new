@@ -4,6 +4,7 @@ package com.cr.jhipsternewapp.domain;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -34,6 +35,9 @@ public class Label implements Serializable {
 
     @Column(name = "owner")
     private String owner;
+
+    @Column(name = "created")
+    private LocalDate created;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -108,6 +112,19 @@ public class Label implements Serializable {
     public void setOwner(String owner) {
         this.owner = owner;
     }
+    
+    public LocalDate getCreated() {
+        return created;
+    }
+
+    public Label created(LocalDate created) {
+        this.created = created;
+        return this;
+    }
+
+    public void setCreated(LocalDate created) {
+        this.created = created;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -139,6 +156,7 @@ public class Label implements Serializable {
             ", version=" + getVersion() +
             ", country='" + getCountry() + "'" +
             ", owner='" + getOwner() + "'" +
+            ", created='" + getCreated() + "'" +
             "}";
     }
 }

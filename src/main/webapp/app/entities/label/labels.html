@@ -24,6 +24,7 @@
                     <th><span>Version</span></th>
                     <th><span>Country</span></th>
                     <th><span>Owner</span></th>
+                    <th><span>Created</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -35,6 +36,7 @@
                     <td>{{label.version}}</td>
                     <td>{{label.country}}</td>
                     <td>{{label.owner}}</td>
+                        <td>{{label.created | date:'mediumDate'}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

@@ -100,6 +100,7 @@
                                 version: null,
                                 country: null,
                                 owner: null,
+                                created: null,
                                 id: null
                             };
                         }
