@@ -38,10 +38,14 @@
             </column>
 
             <column name="owner" type="varchar(255)">
-            	<constraints nullable="true" />
+                <constraints nullable="true" />
             </column>
 
             <column name="created" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="label_type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 

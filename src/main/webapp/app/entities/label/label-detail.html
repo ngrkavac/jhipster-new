@@ -4,10 +4,6 @@
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="dl-horizontal jh-entity-details">
-     	<dt><span>ID</span></dt>
-        <dd>
-            <span>{{vm.label.id}}</span>
-        </dd>
         <dt><span>Label Key</span></dt>
         <dd>
             <span>{{vm.label.label_key}}</span>
@@ -27,9 +23,14 @@
         <dt><span>Owner</span></dt>
         <dd>
             <span>{{vm.label.owner}}</span>
+        </dd>
         <dt><span>Created</span></dt>
         <dd>
             <span>{{vm.label.created | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Label Type</span></dt>
+        <dd>
+            <span>{{vm.label.label_type}}</span>
         </dd>
     </dl>
 

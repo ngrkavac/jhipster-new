@@ -39,6 +39,9 @@ public class Label implements Serializable {
     @Column(name = "created")
     private LocalDate created;
 
+    @Column(name = "label_type")
+    private String label_type;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -112,7 +115,7 @@ public class Label implements Serializable {
     public void setOwner(String owner) {
         this.owner = owner;
     }
-    
+
     public LocalDate getCreated() {
         return created;
     }
@@ -124,6 +127,19 @@ public class Label implements Serializable {
 
     public void setCreated(LocalDate created) {
         this.created = created;
+    }
+
+    public String getLabel_type() {
+        return label_type;
+    }
+
+    public Label label_type(String label_type) {
+        this.label_type = label_type;
+        return this;
+    }
+
+    public void setLabel_type(String label_type) {
+        this.label_type = label_type;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -157,6 +173,7 @@ public class Label implements Serializable {
             ", country='" + getCountry() + "'" +
             ", owner='" + getOwner() + "'" +
             ", created='" + getCreated() + "'" +
+            ", label_type='" + getLabel_type() + "'" +
             "}";
     }
 }
