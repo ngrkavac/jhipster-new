@@ -17,6 +17,10 @@
         {
             "fieldName": "country",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "created",
+            "fieldType": "LocalDate"
         }
     ],
     "changelogDate": "20180123123748",

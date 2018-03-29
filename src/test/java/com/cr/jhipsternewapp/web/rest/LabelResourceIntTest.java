@@ -21,6 +21,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 import static com.cr.jhipsternewapp.web.rest.TestUtil.createFormattingConversionService;
@@ -49,6 +51,9 @@ public class LabelResourceIntTest {
 
     private static final String DEFAULT_COUNTRY = "AAAAAAAAAA";
     private static final String UPDATED_COUNTRY = "BBBBBBBBBB";
+
+    private static final LocalDate DEFAULT_CREATED = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_CREATED = LocalDate.now(ZoneId.systemDefault());
 
     @Autowired
     private LabelRepository labelRepository;
@@ -91,7 +96,8 @@ public class LabelResourceIntTest {
             .label_key(DEFAULT_LABEL_KEY)
             .label_value(DEFAULT_LABEL_VALUE)
             .version(DEFAULT_VERSION)
-            .country(DEFAULT_COUNTRY);
+            .country(DEFAULT_COUNTRY)
+            .created(DEFAULT_CREATED);
         return label;
     }
 
@@ -119,6 +125,7 @@ public class LabelResourceIntTest {
         assertThat(testLabel.getLabel_value()).isEqualTo(DEFAULT_LABEL_VALUE);
         assertThat(testLabel.getVersion()).isEqualTo(DEFAULT_VERSION);
         assertThat(testLabel.getCountry()).isEqualTo(DEFAULT_COUNTRY);
+        assertThat(testLabel.getCreated()).isEqualTo(DEFAULT_CREATED);
     }
 
     @Test
@@ -154,7 +161,8 @@ public class LabelResourceIntTest {
             .andExpect(jsonPath("$.[*].label_key").value(hasItem(DEFAULT_LABEL_KEY.toString())))
             .andExpect(jsonPath("$.[*].label_value").value(hasItem(DEFAULT_LABEL_VALUE.toString())))
             .andExpect(jsonPath("$.[*].version").value(hasItem(DEFAULT_VERSION)))
-            .andExpect(jsonPath("$.[*].country").value(hasItem(DEFAULT_COUNTRY.toString())));
+            .andExpect(jsonPath("$.[*].country").value(hasItem(DEFAULT_COUNTRY.toString())))
+            .andExpect(jsonPath("$.[*].created").value(hasItem(DEFAULT_CREATED.toString())));
     }
 
     @Test
@@ -171,7 +179,8 @@ public class LabelResourceIntTest {
             .andExpect(jsonPath("$.label_key").value(DEFAULT_LABEL_KEY.toString()))
             .andExpect(jsonPath("$.label_value").value(DEFAULT_LABEL_VALUE.toString()))
             .andExpect(jsonPath("$.version").value(DEFAULT_VERSION))
-            .andExpect(jsonPath("$.country").value(DEFAULT_COUNTRY.toString()));
+            .andExpect(jsonPath("$.country").value(DEFAULT_COUNTRY.toString()))
+            .andExpect(jsonPath("$.created").value(DEFAULT_CREATED.toString()));
     }
 
     @Test
@@ -197,7 +206,8 @@ public class LabelResourceIntTest {
             .label_key(UPDATED_LABEL_KEY)
             .label_value(UPDATED_LABEL_VALUE)
             .version(UPDATED_VERSION)
-            .country(UPDATED_COUNTRY);
+            .country(UPDATED_COUNTRY)
+            .created(UPDATED_CREATED);
 
         restLabelMockMvc.perform(put("/api/labels")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -212,6 +222,7 @@ public class LabelResourceIntTest {
         assertThat(testLabel.getLabel_value()).isEqualTo(UPDATED_LABEL_VALUE);
         assertThat(testLabel.getVersion()).isEqualTo(UPDATED_VERSION);
         assertThat(testLabel.getCountry()).isEqualTo(UPDATED_COUNTRY);
+        assertThat(testLabel.getCreated()).isEqualTo(UPDATED_CREATED);
     }
 
     @Test
