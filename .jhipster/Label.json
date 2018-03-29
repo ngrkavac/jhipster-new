@@ -19,13 +19,12 @@
             "fieldType": "String"
         },
         {
-<<<<<<< HEAD
             "fieldName": "owner",
             "fieldType": "String"
-=======
+		},
+        {
             "fieldName": "created",
             "fieldType": "LocalDate"
->>>>>>> feature2
         }
     ],
     "changelogDate": "20180123123748",
