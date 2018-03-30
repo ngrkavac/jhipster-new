@@ -101,6 +101,7 @@
                                 country: null,
                                 owner: null,
                                 created: null,
+                                label_type: null,
                                 id: null
                             };
                         }

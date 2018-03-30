@@ -21,10 +21,14 @@
         {
             "fieldName": "owner",
             "fieldType": "String"
-		},
+        },
         {
             "fieldName": "created",
             "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "label_type",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20180123123748",
