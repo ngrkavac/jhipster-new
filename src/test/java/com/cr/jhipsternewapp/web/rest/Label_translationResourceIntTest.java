@@ -21,6 +21,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 import static com.cr.jhipsternewapp.web.rest.TestUtil.createFormattingConversionService;
@@ -46,6 +48,9 @@ public class Label_translationResourceIntTest {
 
     private static final String DEFAULT_OWNER = "AAAAAAAAAA";
     private static final String UPDATED_OWNER = "BBBBBBBBBB";
+
+    private static final LocalDate DEFAULT_CREATED = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_CREATED = LocalDate.now(ZoneId.systemDefault());
 
     @Autowired
     private Label_translationRepository label_translationRepository;
@@ -87,7 +92,8 @@ public class Label_translationResourceIntTest {
         Label_translation label_translation = new Label_translation()
             .translation_language(DEFAULT_TRANSLATION_LANGUAGE)
             .version(DEFAULT_VERSION)
-            .owner(DEFAULT_OWNER);
+            .owner(DEFAULT_OWNER)
+            .created(DEFAULT_CREATED);
         return label_translation;
     }
 
@@ -114,6 +120,7 @@ public class Label_translationResourceIntTest {
         assertThat(testLabel_translation.getTranslation_language()).isEqualTo(DEFAULT_TRANSLATION_LANGUAGE);
         assertThat(testLabel_translation.getVersion()).isEqualTo(DEFAULT_VERSION);
         assertThat(testLabel_translation.getOwner()).isEqualTo(DEFAULT_OWNER);
+        assertThat(testLabel_translation.getCreated()).isEqualTo(DEFAULT_CREATED);
     }
 
     @Test
@@ -148,7 +155,8 @@ public class Label_translationResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(label_translation.getId().intValue())))
             .andExpect(jsonPath("$.[*].translation_language").value(hasItem(DEFAULT_TRANSLATION_LANGUAGE.toString())))
             .andExpect(jsonPath("$.[*].version").value(hasItem(DEFAULT_VERSION)))
-            .andExpect(jsonPath("$.[*].owner").value(hasItem(DEFAULT_OWNER.toString())));
+            .andExpect(jsonPath("$.[*].owner").value(hasItem(DEFAULT_OWNER.toString())))
+            .andExpect(jsonPath("$.[*].created").value(hasItem(DEFAULT_CREATED.toString())));
     }
 
     @Test
@@ -164,7 +172,8 @@ public class Label_translationResourceIntTest {
             .andExpect(jsonPath("$.id").value(label_translation.getId().intValue()))
             .andExpect(jsonPath("$.translation_language").value(DEFAULT_TRANSLATION_LANGUAGE.toString()))
             .andExpect(jsonPath("$.version").value(DEFAULT_VERSION))
-            .andExpect(jsonPath("$.owner").value(DEFAULT_OWNER.toString()));
+            .andExpect(jsonPath("$.owner").value(DEFAULT_OWNER.toString()))
+            .andExpect(jsonPath("$.created").value(DEFAULT_CREATED.toString()));
     }
 
     @Test
@@ -189,7 +198,8 @@ public class Label_translationResourceIntTest {
         updatedLabel_translation
             .translation_language(UPDATED_TRANSLATION_LANGUAGE)
             .version(UPDATED_VERSION)
-            .owner(UPDATED_OWNER);
+            .owner(UPDATED_OWNER)
+            .created(UPDATED_CREATED);
 
         restLabel_translationMockMvc.perform(put("/api/label-translations")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -203,6 +213,7 @@ public class Label_translationResourceIntTest {
         assertThat(testLabel_translation.getTranslation_language()).isEqualTo(UPDATED_TRANSLATION_LANGUAGE);
         assertThat(testLabel_translation.getVersion()).isEqualTo(UPDATED_VERSION);
         assertThat(testLabel_translation.getOwner()).isEqualTo(UPDATED_OWNER);
+        assertThat(testLabel_translation.getCreated()).isEqualTo(UPDATED_CREATED);
     }
 
     @Test

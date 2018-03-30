@@ -31,6 +31,16 @@
                     ng-model="vm.label_translation.owner"
                     />
         </div>
+        <div class="form-group">
+            <label class="control-label" for="field_created">Created</label>
+                <div class="input-group">
+                    <input id="field_created" type="text" class="form-control" name="created" uib-datepicker-popup="{{dateformat}}" ng-model="vm.label_translation.created" is-open="vm.datePickerOpenStatus.created"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('created')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
 
         <div class="form-group">
             <label for="field_label">Label</label>

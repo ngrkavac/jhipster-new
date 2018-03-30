@@ -12,6 +12,8 @@
 
         vm.label_translation = entity;
         vm.clear = clear;
+        vm.datePickerOpenStatus = {};
+        vm.openCalendar = openCalendar;
         vm.save = save;
         vm.labels = Label.query();
 
@@ -42,6 +44,10 @@
             vm.isSaving = false;
         }
 
+        vm.datePickerOpenStatus.created = false;
 
+        function openCalendar (date) {
+            vm.datePickerOpenStatus[date] = true;
+        }
     }
 })();

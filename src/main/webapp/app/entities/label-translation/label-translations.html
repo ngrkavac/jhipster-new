@@ -22,6 +22,7 @@
                     <th><span>Translation Language</span></th>
                     <th><span>Version</span></th>
                     <th><span>Owner</span></th>
+                    <th><span>Created</span></th>
                     <th><span>Label</span></th>
                     <th></th>
                 </tr>
@@ -32,6 +33,7 @@
                     <td>{{label_translation.translation_language}}</td>
                     <td>{{label_translation.version}}</td>
                     <td>{{label_translation.owner}}</td>
+                        <td>{{label_translation.created | date:'mediumDate'}}</td>
                     <td>
                         <a ui-sref="label-detail({id:label_translation.label.id})">{{label_translation.label.id}}</a>
                     </td>
