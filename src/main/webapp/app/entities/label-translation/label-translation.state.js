@@ -97,6 +97,7 @@
                             return {
                                 translation_language: null,
                                 version: null,
+                                owner: null,
                                 id: null
                             };
                         }

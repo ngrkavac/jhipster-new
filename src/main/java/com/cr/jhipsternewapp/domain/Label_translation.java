@@ -16,7 +16,6 @@ public class Label_translation implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
@@ -26,6 +25,9 @@ public class Label_translation implements Serializable {
 
     @Column(name = "version")
     private Integer version;
+
+    @Column(name = "owner")
+    private String owner;
 
     @ManyToOne
     private Label label;
@@ -63,6 +65,19 @@ public class Label_translation implements Serializable {
 
     public void setVersion(Integer version) {
         this.version = version;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public Label_translation owner(String owner) {
+        this.owner = owner;
+        return this;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 
     public Label getLabel() {
@@ -105,6 +120,7 @@ public class Label_translation implements Serializable {
             "id=" + getId() +
             ", translation_language='" + getTranslation_language() + "'" +
             ", version=" + getVersion() +
+            ", owner='" + getOwner() + "'" +
             "}";
     }
 }

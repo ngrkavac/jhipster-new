@@ -16,6 +16,10 @@
         {
             "fieldName": "version",
             "fieldType": "Integer"
+        },
+        {
+            "fieldName": "owner",
+            "fieldType": "String"
         }
     ],
     "changelogDate": "20180123124740",
