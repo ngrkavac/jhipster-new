@@ -98,6 +98,7 @@
                                 translation_language: null,
                                 version: null,
                                 owner: null,
+                                created: null,
                                 id: null
                             };
                         }
